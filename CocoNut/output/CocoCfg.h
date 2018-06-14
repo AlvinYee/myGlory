@@ -1,0 +1,433 @@
+#ifndef COCO_CFG_H_
+#define COCO_CFG_H_
+
+#include "mq_type.h"
+
+/***** generate parameter macro *****/
+#define HDL_TMH_COCO_SW_VERSION {48u,49u,50u,51u}
+#define HCM_LCD_WHEEL_SPEED_LOCK_THRESHOLD 2
+#define HCM_LCD_VEHICLE_SPEED_LOCK_THRESHOLD 192
+#define HCM_LCD_ENGINE_SPEED_LOCK_THRESHOLD 192
+#define HCM_LCD_IGN_STATE_OFF_VALUE_MAPPING 0
+#define HCM_LCD_POWER_MODE_OFF_VALUE_MAPPING 0
+#define HCM_LCD_SIGNAL_VALID_VALUE_MAPPING 1
+#define HCM_LCD_SIGNAL_INVALID_VALUE_MAPPING 0
+#define HCM_LCD_WHEEL_SPEED_MAX 1000
+#define HCM_LHH_TIMEOUT_LOCK_REQUESTS 36
+#define CRC_START_VALUE 0x00
+#define Crc8_Wrapper DRV_CRC_crc8
+#define SAE_J1850_CRC8_USED FALSE
+#define CRC_OFFSET 7
+/***** generate msg configuration item macro *****/
+#define wheelSpeed_1_idx 0
+#define wheelSpeed_1_predefinedMsg_cfg    wheelSpeed_1
+#define wheelSpeed_1_actualMsg_cfg    BCS_10
+#define wheelSpeed_1_msgEnable_cfg    TRUE
+#define wheelSpeed_1_timeoutMonitor_cfg    TRUE
+#define wheelSpeed_1_timeoutValue_cfg    300
+#define wheelSpeed_1_CRCcheck_cfg    TRUE
+#define wheelSpeed_1_crcOffset_cfg    0
+#define wheelSpeed_1_aliveCntCheck_cfg    TRUE
+#define wheelSpeed_1_aliveCntMax_cfg    16
+#define wheelSpeed_1_aliveCntIncMin_cfg    8
+#define wheelSpeed_1_aliveCntIncMax_cfg    12
+#define wheelSpeed_1_qualCheck_cfg    TRUE
+#define wheelSpeed_1_qualTime_cfg    820
+#define wheelSpeed_1_funcCode_cfg    0x47
+#define wheelSpeed_1_msgLength_cfg    8
+#define wheelSpeed_1_msgLcdSda_cfg    SWSW_coco_sda_lcdwheelspeed1
+#define wheelSpeed_1_msgLcdSdaInv_cfg    SWSW_coco_sda_lcdwheelspeed1_inv
+#define wheelSpeed_1_msgLcdSdaID_cfg    APP_SDA_LcdWheelSpeed1_ID
+#define wheelSpeed_1_msgLcdSdaTrue_cfg    APP_SDA_LcdWheelSpeed1_TRUE
+#define wheelSpeed_1_msgLcdSdaFalse_cfg    APP_SDA_LcdWheelSpeed1_FALSE
+#define wheelSpeed_1_msgQualCntSda_cfg    SWSW_coco_sda_lcdqualcntwheelspeed1
+#define wheelSpeed_1_msgQualCntSdaInv_cfg    SWSW_coco_sda_lcdqualcntwheelspeed1_inv
+#define wheelSpeed_1_msgQualCntSdaID_cfg    APP_SDA_LcdQualCntWheelSpeed1_ID
+/***** generate signal configuration item macro *****/
+#define WHEEL_SPEED_1_CRC_idx 0
+#define WHEEL_SPEED_1_CRC_predefinedSig_cfg    WHEEL_SPEED_1_CRC
+#define WHEEL_SPEED_1_CRC_actualSig_cfg    BCS_10_Checksum
+#define WHEEL_SPEED_1_CRC_sigEnable_cfg    TRUE
+#define WHEEL_SPEED_1_CRC_initValue_cfg    65535
+#define WHEEL_SPEED_1_CRC_sigSdaStorage_cfg    NUL
+#define WHEEL_SPEED_1_CRC_sigSdaStorageInv_cfg    NUL
+#define WHEEL_SPEED_1_CRC_sigSdaID_cfg    NULL
+#define WHEEL_SPEED_1_ALIVE_idx 1
+#define WHEEL_SPEED_1_ALIVE_predefinedSig_cfg    WHEEL_SPEED_1_ALIVE
+#define WHEEL_SPEED_1_ALIVE_actualSig_cfg    BCS_10_MsgCounter
+#define WHEEL_SPEED_1_ALIVE_sigEnable_cfg    TRUE
+#define WHEEL_SPEED_1_ALIVE_initValue_cfg    65535
+#define WHEEL_SPEED_1_ALIVE_sigSdaStorage_cfg    NUL
+#define WHEEL_SPEED_1_ALIVE_sigSdaStorageInv_cfg    NUL
+#define WHEEL_SPEED_1_ALIVE_sigSdaID_cfg    NULL
+#define WHEEL_SPEED_1_VALIDITY_FR_idx 2
+#define WHEEL_SPEED_1_VALIDITY_FR_predefinedSig_cfg    WHEEL_SPEED_1_VALIDITY_FR
+#define WHEEL_SPEED_1_VALIDITY_FR_actualSig_cfg    NUL
+#define WHEEL_SPEED_1_VALIDITY_FR_sigEnable_cfg    FALSE
+#define WHEEL_SPEED_1_VALIDITY_FR_initValue_cfg    NULL
+#define WHEEL_SPEED_1_VALIDITY_FR_sigSdaStorage_cfg    SWSW_coco_sda_lcdwheelspeedfrvalid
+#define WHEEL_SPEED_1_VALIDITY_FR_sigSdaStorageInv_cfg    SWSW_coco_sda_lcdwheelspeedfrvalid_inv
+#define WHEEL_SPEED_1_VALIDITY_FR_sigSdaID_cfg    APP_SDA_BufferWheelSpeedFR_ID
+#define WHEEL_SPEED_1_VALIDITY_FL_idx 3
+#define WHEEL_SPEED_1_VALIDITY_FL_predefinedSig_cfg    WHEEL_SPEED_1_VALIDITY_FL
+#define WHEEL_SPEED_1_VALIDITY_FL_actualSig_cfg    NUL
+#define WHEEL_SPEED_1_VALIDITY_FL_sigEnable_cfg    FALSE
+#define WHEEL_SPEED_1_VALIDITY_FL_initValue_cfg    NULL
+#define WHEEL_SPEED_1_VALIDITY_FL_sigSdaStorage_cfg    SWSW_coco_sda_lcdwheelspeedflvalid
+#define WHEEL_SPEED_1_VALIDITY_FL_sigSdaStorageInv_cfg    SWSW_coco_sda_lcdwheelspeedflvalid_inv
+#define WHEEL_SPEED_1_VALIDITY_FL_sigSdaID_cfg    APP_SDA_BufferWheelSpeedFL_ID
+#define WHEEL_SPEED_1_VALIDITY_RR_idx 4
+#define WHEEL_SPEED_1_VALIDITY_RR_predefinedSig_cfg    WHEEL_SPEED_1_VALIDITY_RR
+#define WHEEL_SPEED_1_VALIDITY_RR_actualSig_cfg    BCS_RRWheelSpdVD
+#define WHEEL_SPEED_1_VALIDITY_RR_sigEnable_cfg    TRUE
+#define WHEEL_SPEED_1_VALIDITY_RR_initValue_cfg    0
+#define WHEEL_SPEED_1_VALIDITY_RR_sigSdaStorage_cfg    SWSW_coco_sda_lcdwheelspeedrrvalid
+#define WHEEL_SPEED_1_VALIDITY_RR_sigSdaStorageInv_cfg    SWSW_coco_sda_lcdwheelspeedrrvalid_inv
+#define WHEEL_SPEED_1_VALIDITY_RR_sigSdaID_cfg    APP_SDA_BufferWheelSpeedRR_ID
+#define WHEEL_SPEED_1_VALIDITY_RL_idx 5
+#define WHEEL_SPEED_1_VALIDITY_RL_predefinedSig_cfg    WHEEL_SPEED_1_VALIDITY_RL
+#define WHEEL_SPEED_1_VALIDITY_RL_actualSig_cfg    BCS_RLWheelSpdVD
+#define WHEEL_SPEED_1_VALIDITY_RL_sigEnable_cfg    TRUE
+#define WHEEL_SPEED_1_VALIDITY_RL_initValue_cfg    0
+#define WHEEL_SPEED_1_VALIDITY_RL_sigSdaStorage_cfg    SWSW_coco_sda_lcdwheelspeedrlvalid
+#define WHEEL_SPEED_1_VALIDITY_RL_sigSdaStorageInv_cfg    SWSW_coco_sda_lcdwheelspeedrlvalid_inv
+#define WHEEL_SPEED_1_VALIDITY_RL_sigSdaID_cfg    APP_SDA_BufferWheelSpeedRL_ID
+#define WHEEL_SPEED_1_FR_idx 6
+#define WHEEL_SPEED_1_FR_predefinedSig_cfg    WHEEL_SPEED_1_FR
+#define WHEEL_SPEED_1_FR_actualSig_cfg    NUL
+#define WHEEL_SPEED_1_FR_sigEnable_cfg    FALSE
+#define WHEEL_SPEED_1_FR_initValue_cfg    NULL
+#define WHEEL_SPEED_1_FR_sigSdaStorage_cfg    SWSW_coco_sda_bufferwheelspeedfr
+#define WHEEL_SPEED_1_FR_sigSdaStorageInv_cfg    SWSW_coco_sda_bufferwheelspeedfr_inv
+#define WHEEL_SPEED_1_FR_sigSdaID_cfg    APP_SDA_BufferWheelSpeedFR_ID
+#define WHEEL_SPEED_1_FL_idx 7
+#define WHEEL_SPEED_1_FL_predefinedSig_cfg    WHEEL_SPEED_1_FL
+#define WHEEL_SPEED_1_FL_actualSig_cfg    NUL
+#define WHEEL_SPEED_1_FL_sigEnable_cfg    FALSE
+#define WHEEL_SPEED_1_FL_initValue_cfg    NULL
+#define WHEEL_SPEED_1_FL_sigSdaStorage_cfg    SWSW_coco_sda_bufferwheelspeedfl
+#define WHEEL_SPEED_1_FL_sigSdaStorageInv_cfg    SWSW_coco_sda_bufferwheelspeedfl_inv
+#define WHEEL_SPEED_1_FL_sigSdaID_cfg    APP_SDA_BufferWheelSpeedFL_ID
+#define WHEEL_SPEED_1_RR_idx 8
+#define WHEEL_SPEED_1_RR_predefinedSig_cfg    WHEEL_SPEED_1_RR
+#define WHEEL_SPEED_1_RR_actualSig_cfg    BCS_RRWheelSpd
+#define WHEEL_SPEED_1_RR_sigEnable_cfg    TRUE
+#define WHEEL_SPEED_1_RR_initValue_cfg    65535
+#define WHEEL_SPEED_1_RR_sigSdaStorage_cfg    SWSW_coco_sda_bufferwheelspeedrr
+#define WHEEL_SPEED_1_RR_sigSdaStorageInv_cfg    SWSW_coco_sda_bufferwheelspeedrr_inv
+#define WHEEL_SPEED_1_RR_sigSdaID_cfg    APP_SDA_BufferWheelSpeedRR_ID
+#define WHEEL_SPEED_1_RL_idx 9
+#define WHEEL_SPEED_1_RL_predefinedSig_cfg    WHEEL_SPEED_1_RL
+#define WHEEL_SPEED_1_RL_actualSig_cfg    BCS_RLWheelSpd
+#define WHEEL_SPEED_1_RL_sigEnable_cfg    TRUE
+#define WHEEL_SPEED_1_RL_initValue_cfg    65535
+#define WHEEL_SPEED_1_RL_sigSdaStorage_cfg    SWSW_coco_sda_bufferwheelspeedrl
+#define WHEEL_SPEED_1_RL_sigSdaStorageInv_cfg    SWSW_coco_sda_bufferwheelspeedrl_inv
+#define WHEEL_SPEED_1_RL_sigSdaID_cfg    APP_SDA_BufferWheelSpeedRL_ID
+/***** generate msg configuration item macro *****/
+#define wheelSpeed_2_idx 1
+#define wheelSpeed_2_predefinedMsg_cfg    wheelSpeed_2
+#define wheelSpeed_2_actualMsg_cfg    BCS_9
+#define wheelSpeed_2_msgEnable_cfg    TRUE
+#define wheelSpeed_2_timeoutMonitor_cfg    TRUE
+#define wheelSpeed_2_timeoutValue_cfg    300
+#define wheelSpeed_2_CRCcheck_cfg    TRUE
+#define wheelSpeed_2_crcOffset_cfg    0
+#define wheelSpeed_2_aliveCntCheck_cfg    TRUE
+#define wheelSpeed_2_aliveCntMax_cfg    16
+#define wheelSpeed_2_aliveCntIncMin_cfg    8
+#define wheelSpeed_2_aliveCntIncMax_cfg    12
+#define wheelSpeed_2_qualCheck_cfg    TRUE
+#define wheelSpeed_2_qualTime_cfg    820
+#define wheelSpeed_2_funcCode_cfg    0x48
+#define wheelSpeed_2_msgLength_cfg    8
+#define wheelSpeed_2_msgLcdSda_cfg    SWSW_coco_sda_lcdwheelspeed2
+#define wheelSpeed_2_msgLcdSdaInv_cfg    SWSW_coco_sda_lcdwheelspeed2_inv
+#define wheelSpeed_2_msgLcdSdaID_cfg    APP_SDA_LcdWheelSpeed2_ID
+#define wheelSpeed_2_msgLcdSdaTrue_cfg    APP_SDA_LcdWheelSpeed2_TRUE
+#define wheelSpeed_2_msgLcdSdaFalse_cfg    APP_SDA_LcdWheelSpeed2_FALSE
+#define wheelSpeed_2_msgQualCntSda_cfg    SWSW_coco_sda_lcdqualcntwheelspeed2
+#define wheelSpeed_2_msgQualCntSdaInv_cfg    SWSW_coco_sda_lcdqualcntwheelspeed2_inv
+#define wheelSpeed_2_msgQualCntSdaID_cfg    APP_SDA_LcdQualCntWheelSpeed2_ID
+/***** generate signal configuration item macro *****/
+#define WHEEL_SPEED_2_CRC_idx 0
+#define WHEEL_SPEED_2_CRC_predefinedSig_cfg    WHEEL_SPEED_2_CRC
+#define WHEEL_SPEED_2_CRC_actualSig_cfg    BCS_9_Checksum
+#define WHEEL_SPEED_2_CRC_sigEnable_cfg    TRUE
+#define WHEEL_SPEED_2_CRC_initValue_cfg    65535
+#define WHEEL_SPEED_2_CRC_sigSdaStorage_cfg    NUL
+#define WHEEL_SPEED_2_CRC_sigSdaStorageInv_cfg    NUL
+#define WHEEL_SPEED_2_CRC_sigSdaID_cfg    NULL
+#define WHEEL_SPEED_2_ALIVE_idx 1
+#define WHEEL_SPEED_2_ALIVE_predefinedSig_cfg    WHEEL_SPEED_2_ALIVE
+#define WHEEL_SPEED_2_ALIVE_actualSig_cfg    BCS_9_MsgCounter
+#define WHEEL_SPEED_2_ALIVE_sigEnable_cfg    TRUE
+#define WHEEL_SPEED_2_ALIVE_initValue_cfg    65535
+#define WHEEL_SPEED_2_ALIVE_sigSdaStorage_cfg    NUL
+#define WHEEL_SPEED_2_ALIVE_sigSdaStorageInv_cfg    NUL
+#define WHEEL_SPEED_2_ALIVE_sigSdaID_cfg    NULL
+#define WHEEL_SPEED_2_VALIDITY_FR_idx 2
+#define WHEEL_SPEED_2_VALIDITY_FR_predefinedSig_cfg    WHEEL_SPEED_2_VALIDITY_FR
+#define WHEEL_SPEED_2_VALIDITY_FR_actualSig_cfg    BCS_FRWheelSpdVD
+#define WHEEL_SPEED_2_VALIDITY_FR_sigEnable_cfg    TRUE
+#define WHEEL_SPEED_2_VALIDITY_FR_initValue_cfg    0
+#define WHEEL_SPEED_2_VALIDITY_FR_sigSdaStorage_cfg    SWSW_coco_sda_lcdwheelspeedfrvalid
+#define WHEEL_SPEED_2_VALIDITY_FR_sigSdaStorageInv_cfg    SWSW_coco_sda_lcdwheelspeedfrvalid_inv
+#define WHEEL_SPEED_2_VALIDITY_FR_sigSdaID_cfg    APP_SDA_LcdWheelSpeedFRValid_ID
+#define WHEEL_SPEED_2_VALIDITY_FL_idx 3
+#define WHEEL_SPEED_2_VALIDITY_FL_predefinedSig_cfg    WHEEL_SPEED_2_VALIDITY_FL
+#define WHEEL_SPEED_2_VALIDITY_FL_actualSig_cfg    BCS_FLWheelSpdVD
+#define WHEEL_SPEED_2_VALIDITY_FL_sigEnable_cfg    TRUE
+#define WHEEL_SPEED_2_VALIDITY_FL_initValue_cfg    0
+#define WHEEL_SPEED_2_VALIDITY_FL_sigSdaStorage_cfg    SWSW_coco_sda_lcdwheelspeedflvalid
+#define WHEEL_SPEED_2_VALIDITY_FL_sigSdaStorageInv_cfg    SWSW_coco_sda_lcdwheelspeedflvalid_inv
+#define WHEEL_SPEED_2_VALIDITY_FL_sigSdaID_cfg    APP_SDA_LcdWheelSpeedFLValid_ID
+#define WHEEL_SPEED_2_VALIDITY_RR_idx 4
+#define WHEEL_SPEED_2_VALIDITY_RR_predefinedSig_cfg    WHEEL_SPEED_2_VALIDITY_RR
+#define WHEEL_SPEED_2_VALIDITY_RR_actualSig_cfg    NUL
+#define WHEEL_SPEED_2_VALIDITY_RR_sigEnable_cfg    FALSE
+#define WHEEL_SPEED_2_VALIDITY_RR_initValue_cfg    NULL
+#define WHEEL_SPEED_2_VALIDITY_RR_sigSdaStorage_cfg    SWSW_coco_sda_lcdwheelspeedrrvalid
+#define WHEEL_SPEED_2_VALIDITY_RR_sigSdaStorageInv_cfg    SWSW_coco_sda_lcdwheelspeedrrvalid_inv
+#define WHEEL_SPEED_2_VALIDITY_RR_sigSdaID_cfg    APP_SDA_LcdWheelSpeedRRValid_ID
+#define WHEEL_SPEED_2_VALIDITY_RL_idx 5
+#define WHEEL_SPEED_2_VALIDITY_RL_predefinedSig_cfg    WHEEL_SPEED_2_VALIDITY_RL
+#define WHEEL_SPEED_2_VALIDITY_RL_actualSig_cfg    NUL
+#define WHEEL_SPEED_2_VALIDITY_RL_sigEnable_cfg    FALSE
+#define WHEEL_SPEED_2_VALIDITY_RL_initValue_cfg    NULL
+#define WHEEL_SPEED_2_VALIDITY_RL_sigSdaStorage_cfg    SWSW_coco_sda_lcdwheelspeedrlvalid
+#define WHEEL_SPEED_2_VALIDITY_RL_sigSdaStorageInv_cfg    SWSW_coco_sda_lcdwheelspeedrlvalid_inv
+#define WHEEL_SPEED_2_VALIDITY_RL_sigSdaID_cfg    APP_SDA_LcdWheelSpeedRLValid_ID
+#define WHEEL_SPEED_2_FR_idx 6
+#define WHEEL_SPEED_2_FR_predefinedSig_cfg    WHEEL_SPEED_2_FR
+#define WHEEL_SPEED_2_FR_actualSig_cfg    BCS_FRWheelSpd
+#define WHEEL_SPEED_2_FR_sigEnable_cfg    TRUE
+#define WHEEL_SPEED_2_FR_initValue_cfg    65535
+#define WHEEL_SPEED_2_FR_sigSdaStorage_cfg    SWSW_coco_sda_bufferwheelspeedfr
+#define WHEEL_SPEED_2_FR_sigSdaStorageInv_cfg    SWSW_coco_sda_bufferwheelspeedfr_inv
+#define WHEEL_SPEED_2_FR_sigSdaID_cfg    APP_SDA_BufferWheelSpeedFR_ID
+#define WHEEL_SPEED_2_FL_idx 7
+#define WHEEL_SPEED_2_FL_predefinedSig_cfg    WHEEL_SPEED_2_FL
+#define WHEEL_SPEED_2_FL_actualSig_cfg    BCS_FLWheelSpd
+#define WHEEL_SPEED_2_FL_sigEnable_cfg    TRUE
+#define WHEEL_SPEED_2_FL_initValue_cfg    65535
+#define WHEEL_SPEED_2_FL_sigSdaStorage_cfg    SWSW_coco_sda_bufferwheelspeedfl
+#define WHEEL_SPEED_2_FL_sigSdaStorageInv_cfg    SWSW_coco_sda_bufferwheelspeedfl_inv
+#define WHEEL_SPEED_2_FL_sigSdaID_cfg    APP_SDA_BufferWheelSpeedFL_ID
+#define WHEEL_SPEED_2_RR_idx 8
+#define WHEEL_SPEED_2_RR_predefinedSig_cfg    WHEEL_SPEED_2_RR
+#define WHEEL_SPEED_2_RR_actualSig_cfg    NUL
+#define WHEEL_SPEED_2_RR_sigEnable_cfg    FALSE
+#define WHEEL_SPEED_2_RR_initValue_cfg    NULL
+#define WHEEL_SPEED_2_RR_sigSdaStorage_cfg    SWSW_coco_sda_bufferwheelspeedrr
+#define WHEEL_SPEED_2_RR_sigSdaStorageInv_cfg    SWSW_coco_sda_bufferwheelspeedrr_inv
+#define WHEEL_SPEED_2_RR_sigSdaID_cfg    APP_SDA_BufferWheelSpeedRR_ID
+#define WHEEL_SPEED_2_RL_idx 9
+#define WHEEL_SPEED_2_RL_predefinedSig_cfg    WHEEL_SPEED_2_RL
+#define WHEEL_SPEED_2_RL_actualSig_cfg    NUL
+#define WHEEL_SPEED_2_RL_sigEnable_cfg    FALSE
+#define WHEEL_SPEED_2_RL_initValue_cfg    NULL
+#define WHEEL_SPEED_2_RL_sigSdaStorage_cfg    SWSW_coco_sda_bufferwheelspeedrl
+#define WHEEL_SPEED_2_RL_sigSdaStorageInv_cfg    SWSW_coco_sda_bufferwheelspeedrl_inv
+#define WHEEL_SPEED_2_RL_sigSdaID_cfg    APP_SDA_BufferWheelSpeedRL_ID
+/***** generate msg configuration item macro *****/
+#define powerMode_idx 2
+#define powerMode_predefinedMsg_cfg    powerMode
+#define powerMode_actualMsg_cfg    PEPS_2
+#define powerMode_msgEnable_cfg    TRUE
+#define powerMode_timeoutMonitor_cfg    TRUE
+#define powerMode_timeoutValue_cfg    300
+#define powerMode_CRCcheck_cfg    TRUE
+#define powerMode_crcOffset_cfg    0
+#define powerMode_aliveCntCheck_cfg    TRUE
+#define powerMode_aliveCntMax_cfg    16
+#define powerMode_aliveCntIncMin_cfg    8
+#define powerMode_aliveCntIncMax_cfg    12
+#define powerMode_qualCheck_cfg    TRUE
+#define powerMode_qualTime_cfg    820
+#define powerMode_funcCode_cfg    0x49
+#define powerMode_msgLength_cfg    8
+#define powerMode_msgLcdSda_cfg    SWSW_coco_sda_lcdpowermode
+#define powerMode_msgLcdSdaInv_cfg    SWSW_coco_sda_lcdpowermode_inv
+#define powerMode_msgLcdSdaID_cfg    APP_SDA_LcdPowerMode_ID
+#define powerMode_msgLcdSdaTrue_cfg    APP_SDA_LcdPowerMode_TRUE
+#define powerMode_msgLcdSdaFalse_cfg    APP_SDA_LcdPowerMode_FALSE
+#define powerMode_msgQualCntSda_cfg    SWSW_coco_sda_lcdqualcntpowermode
+#define powerMode_msgQualCntSdaInv_cfg    SWSW_coco_sda_lcdqualcntpowermode_inv
+#define powerMode_msgQualCntSdaID_cfg    APP_SDA_LcdQualCntPowerMode_ID
+/***** generate signal configuration item macro *****/
+#define POWER_MODE_CRC_idx 0
+#define POWER_MODE_CRC_predefinedSig_cfg    POWER_MODE_CRC
+#define POWER_MODE_CRC_actualSig_cfg    PEPS_2_Checksum
+#define POWER_MODE_CRC_sigEnable_cfg    TRUE
+#define POWER_MODE_CRC_initValue_cfg    65535
+#define POWER_MODE_CRC_sigSdaStorage_cfg    NUL
+#define POWER_MODE_CRC_sigSdaStorageInv_cfg    NUL
+#define POWER_MODE_CRC_sigSdaID_cfg    NULL
+#define POWER_MODE_ALIVE_idx 1
+#define POWER_MODE_ALIVE_predefinedSig_cfg    POWER_MODE_ALIVE
+#define POWER_MODE_ALIVE_actualSig_cfg    PEPS_2_MsgCounter
+#define POWER_MODE_ALIVE_sigEnable_cfg    TRUE
+#define POWER_MODE_ALIVE_initValue_cfg    65535
+#define POWER_MODE_ALIVE_sigSdaStorage_cfg    NUL
+#define POWER_MODE_ALIVE_sigSdaStorageInv_cfg    NUL
+#define POWER_MODE_ALIVE_sigSdaID_cfg    NULL
+#define POWER_MODE_VALIDITY_idx 2
+#define POWER_MODE_VALIDITY_predefinedSig_cfg    POWER_MODE_VALIDITY
+#define POWER_MODE_VALIDITY_actualSig_cfg    PEPS_SysPowMode_RddyVD
+#define POWER_MODE_VALIDITY_sigEnable_cfg    TRUE
+#define POWER_MODE_VALIDITY_initValue_cfg    0
+#define POWER_MODE_VALIDITY_sigSdaStorage_cfg    SWSW_coco_sda_lcdpowermodevalid
+#define POWER_MODE_VALIDITY_sigSdaStorageInv_cfg    SWSW_coco_sda_lcdpowermodevalid_inv
+#define POWER_MODE_VALIDITY_sigSdaID_cfg    APP_SDA_LcdPowerModeValid_ID
+#define POWER_MODE_idx 3
+#define POWER_MODE_predefinedSig_cfg    POWER_MODE
+#define POWER_MODE_actualSig_cfg    PEPS_SysPowMode_Rddy
+#define POWER_MODE_sigEnable_cfg    TRUE
+#define POWER_MODE_initValue_cfg    65535
+#define POWER_MODE_sigSdaStorage_cfg    SWSW_coco_sda_bufferpowermode
+#define POWER_MODE_sigSdaStorageInv_cfg    SWSW_coco_sda_lcdpowermodevalid_inv
+#define POWER_MODE_sigSdaID_cfg    APP_SDA_BufferPowerMode_ID
+#define IGNITION_STATE_idx 4
+#define IGNITION_STATE_predefinedSig_cfg    IGNITION_STATE
+#define IGNITION_STATE_actualSig_cfg    PEPS_IG1RelaySt
+#define IGNITION_STATE_sigEnable_cfg    TRUE
+#define IGNITION_STATE_initValue_cfg    65535
+#define IGNITION_STATE_sigSdaStorage_cfg    SWSW_coco_sda_bufferignitionstate
+#define IGNITION_STATE_sigSdaStorageInv_cfg    SWSW_coco_sda_bufferignitionstate_inv
+#define IGNITION_STATE_sigSdaID_cfg    APP_SDA_BufferIgnitionState_ID
+#define IGNITION_STATE_VALIDITY_idx 5
+#define IGNITION_STATE_VALIDITY_predefinedSig_cfg    IGNITION_STATE_VALIDITY
+#define IGNITION_STATE_VALIDITY_actualSig_cfg    PEPS_IG1RelayStVD
+#define IGNITION_STATE_VALIDITY_sigEnable_cfg    TRUE
+#define IGNITION_STATE_VALIDITY_initValue_cfg    0
+#define IGNITION_STATE_VALIDITY_sigSdaStorage_cfg    SWSW_coco_sda_lcdvehiclespeedvalid
+#define IGNITION_STATE_VALIDITY_sigSdaStorageInv_cfg    SWSW_coco_sda_lcdignitionstatevalid_inv
+#define IGNITION_STATE_VALIDITY_sigSdaID_cfg    APP_SDA_LcdIgnitionStateValid_ID
+/***** generate msg configuration item macro *****/
+#define vehicleSpeed_idx 3
+#define vehicleSpeed_predefinedMsg_cfg    vehicleSpeed
+#define vehicleSpeed_actualMsg_cfg    EMS_2
+#define vehicleSpeed_msgEnable_cfg    TRUE
+#define vehicleSpeed_timeoutMonitor_cfg    TRUE
+#define vehicleSpeed_timeoutValue_cfg    300
+#define vehicleSpeed_CRCcheck_cfg    TRUE
+#define vehicleSpeed_crcOffset_cfg    0
+#define vehicleSpeed_aliveCntCheck_cfg    TRUE
+#define vehicleSpeed_aliveCntMax_cfg    16
+#define vehicleSpeed_aliveCntIncMin_cfg    8
+#define vehicleSpeed_aliveCntIncMax_cfg    12
+#define vehicleSpeed_qualCheck_cfg    TRUE
+#define vehicleSpeed_qualTime_cfg    820
+#define vehicleSpeed_funcCode_cfg    0x4A
+#define vehicleSpeed_msgLength_cfg    8
+#define vehicleSpeed_msgLcdSda_cfg    SWSW_coco_sda_lcdvehiclespeed
+#define vehicleSpeed_msgLcdSdaInv_cfg    SWSW_coco_sda_lcdvehiclespeed_inv
+#define vehicleSpeed_msgLcdSdaID_cfg    APP_SDA_LcdVehicleSpeed_ID
+#define vehicleSpeed_msgLcdSdaTrue_cfg    APP_SDA_LcdVehicleSpeed_TRUE
+#define vehicleSpeed_msgLcdSdaFalse_cfg    APP_SDA_LcdVehicleSpeed_FALSE
+#define vehicleSpeed_msgQualCntSda_cfg    SWSW_coco_sda_lcdqualcntvehiclespeed
+#define vehicleSpeed_msgQualCntSdaInv_cfg    SWSW_coco_sda_lcdqualcntvehiclespeed_inv
+#define vehicleSpeed_msgQualCntSdaID_cfg    APP_SDA_LcdQualCntVehicleSpeed_ID
+/***** generate signal configuration item macro *****/
+#define VEHICLE_SPEED_CRC_idx 0
+#define VEHICLE_SPEED_CRC_predefinedSig_cfg    VEHICLE_SPEED_CRC
+#define VEHICLE_SPEED_CRC_actualSig_cfg    NUL
+#define VEHICLE_SPEED_CRC_sigEnable_cfg    FALSE
+#define VEHICLE_SPEED_CRC_initValue_cfg    NULL
+#define VEHICLE_SPEED_CRC_sigSdaStorage_cfg    NUL
+#define VEHICLE_SPEED_CRC_sigSdaStorageInv_cfg    NUL
+#define VEHICLE_SPEED_CRC_sigSdaID_cfg    NULL
+#define VEHICLE_SPEED_ALIVE_idx 1
+#define VEHICLE_SPEED_ALIVE_predefinedSig_cfg    VEHICLE_SPEED_ALIVE
+#define VEHICLE_SPEED_ALIVE_actualSig_cfg    NUL
+#define VEHICLE_SPEED_ALIVE_sigEnable_cfg    FALSE
+#define VEHICLE_SPEED_ALIVE_initValue_cfg    NULL
+#define VEHICLE_SPEED_ALIVE_sigSdaStorage_cfg    NUL
+#define VEHICLE_SPEED_ALIVE_sigSdaStorageInv_cfg    NUL
+#define VEHICLE_SPEED_ALIVE_sigSdaID_cfg    NULL
+#define VEHICLE_SPEED_VALIDITY_idx 2
+#define VEHICLE_SPEED_VALIDITY_predefinedSig_cfg    VEHICLE_SPEED_VALIDITY
+#define VEHICLE_SPEED_VALIDITY_actualSig_cfg    EMS_EngSpdVD
+#define VEHICLE_SPEED_VALIDITY_sigEnable_cfg    TRUE
+#define VEHICLE_SPEED_VALIDITY_initValue_cfg    0
+#define VEHICLE_SPEED_VALIDITY_sigSdaStorage_cfg    SWSW_coco_sda_lcdvehiclespeedvalid
+#define VEHICLE_SPEED_VALIDITY_sigSdaStorageInv_cfg    SWSW_coco_sda_lcdvehiclespeedvalid_inv
+#define VEHICLE_SPEED_VALIDITY_sigSdaID_cfg    APP_SDA_LcdVehicleSpeedValid_ID
+#define VEHICLE_SPEED_idx 3
+#define VEHICLE_SPEED_predefinedSig_cfg    VEHICLE_SPEED
+#define VEHICLE_SPEED_actualSig_cfg    EMS_EngSpd
+#define VEHICLE_SPEED_sigEnable_cfg    TRUE
+#define VEHICLE_SPEED_initValue_cfg    65535
+#define VEHICLE_SPEED_sigSdaStorage_cfg    SWSW_coco_sda_buffervehiclespeed
+#define VEHICLE_SPEED_sigSdaStorageInv_cfg    SWSW_coco_sda_buffervehiclespeed_inv
+#define VEHICLE_SPEED_sigSdaID_cfg    APP_SDA_BufferVehicleSpeed_ID
+#define ENGINE_SPEED_idx 4
+#define ENGINE_SPEED_predefinedSig_cfg    ENGINE_SPEED
+#define ENGINE_SPEED_actualSig_cfg    EMS_EngSpd
+#define ENGINE_SPEED_sigEnable_cfg    TRUE
+#define ENGINE_SPEED_initValue_cfg    65535
+#define ENGINE_SPEED_sigSdaStorage_cfg    SWSW_coco_sda_bufferenginespeed
+#define ENGINE_SPEED_sigSdaStorageInv_cfg    SWSW_coco_sda_bufferenginespeed_inv
+#define ENGINE_SPEED_sigSdaID_cfg    APP_SDA_BufferEngineSpeed_ID
+#define msgNum 4
+/***** generate signal config structure *****/
+typedef struct{
+	uint16 * const actualSig;
+	bool const sigEnable;
+	uint16 const initValue;
+	uint16 * const sigSdaStorage;
+	uint16 * const sigSdaStorageInv;
+	uint16 const sigSdaID;
+}SIGNAL_CONFIG_Tag;
+/***** generate msg config structure *****/
+typedef struct{
+	uint8 * const actualMsg;
+	bool const msgEnable;
+	bool const timeoutMonitor;
+	uint16 const timeoutValue;
+	bool const CRCcheck;
+	uint8 const crcOffset;
+	bool const aliveCntCheck;
+	uint8 const aliveCntMax;
+	uint8 const aliveCntIncMin;
+	uint8 const aliveCntIncMax;
+	bool const qualCheck;
+	uint16 const qualTime;
+	uint8 const funcCode;
+	uint8 const msgLength;
+	uint16 * const msgLcdSda;
+	uint16 * const msgLcdSdaInv;
+	uint16 const msgLcdSdaID;
+	uint16 const msgLcdSdaTrue;
+	uint16 const msgLcdSdaFalse;
+	uint16 * const msgQualCntSda;
+	uint16 * const msgQualCntSdaInv;
+	uint16 const msgQualCntSdaID;
+	SIGNAL_CONFIG_Tag signalConfig[10];
+}MSG_CONFIG_Tag;
+extern const MSG_CONFIG_Tag CocoConfigurations[];
+
+extern uint16  BCS_10_Checksum;
+extern uint16  BCS_10_MsgCounter;
+extern uint16  BCS_RRWheelSpdVD;
+extern uint16  BCS_RLWheelSpdVD;
+extern uint16  BCS_RRWheelSpd;
+extern uint16  BCS_RLWheelSpd;
+extern uint16  BCS_9_Checksum;
+extern uint16  BCS_9_MsgCounter;
+extern uint16  BCS_FRWheelSpdVD;
+extern uint16  BCS_FLWheelSpdVD;
+extern uint16  BCS_FRWheelSpd;
+extern uint16  BCS_FLWheelSpd;
+extern uint16  PEPS_2_Checksum;
+extern uint16  PEPS_2_MsgCounter;
+extern uint16  PEPS_SysPowMode_RddyVD;
+extern uint16  PEPS_SysPowMode_Rddy;
+extern uint16  PEPS_IG1RelaySt;
+extern uint16  PEPS_IG1RelayStVD;
+extern uint16  EMS_EngSpdVD;
+extern uint16  EMS_EngSpd;
+extern uint16  EMS_EngSpd;
+#endif /* COCO_CFG_H_ */
+
