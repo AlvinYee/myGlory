@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="1.0" name="CocoNut" projectNo="CCSW0007" Author="Alvin Ye" constraints = "">
+    <LCD>
+        <Parameters>
+            <Parameter>
+                <predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">HDL_TMH_COCO_SW_VERSION</predefinedPar>
+                <actualValue constraints = "\{[0-9]+u,[0-9]+u,[0-9]+u,[0-9]+u\}">{48u,49u,50u,51u}</actualValue>
+            </Parameter>
+             <Parameter>
+                <predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">HCM_LCD_WHEEL_SPEED_LOCK_THRESHOLD</predefinedPar>
+                <actualValue constraints = "[0-9]+">2</actualValue>
+            </Parameter>
+            <Parameter>
+                <predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">HCM_LCD_VEHICLE_SPEED_LOCK_THRESHOLD</predefinedPar>
+                <actualValue constraints = "[0-9]+">192</actualValue>
+            </Parameter>
+            <Parameter>
+                <predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">HCM_LCD_ENGINE_SPEED_LOCK_THRESHOLD</predefinedPar>
+                <actualValue constraints = "[0-9]+">192</actualValue>
+            </Parameter>            <Parameter>
+                <predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">HCM_LCD_IGN_STATE_OFF_VALUE_MAPPING</predefinedPar>
+                <actualValue constraints = "[0-9]+">0</actualValue>
+            </Parameter>
+            <Parameter>
+                <predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">HCM_LCD_POWER_MODE_OFF_VALUE_MAPPING</predefinedPar>
+                <actualValue constraints = "[0-9]+">0</actualValue>
+            </Parameter>            
+            <Parameter>
+                <predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">HCM_LCD_SIGNAL_VALID_VALUE_MAPPING</predefinedPar>
+                <actualValue constraints = "[0-9]+">1</actualValue>
+            </Parameter>            
+            <Parameter>
+                <predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">HCM_LCD_SIGNAL_INVALID_VALUE_MAPPING</predefinedPar>
+                <actualValue constraints = "[0-9]+">0</actualValue>
+            </Parameter>            
+            <Parameter>
+                <predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">HCM_LCD_WHEEL_SPEED_MAX</predefinedPar>
+                <actualValue constraints = "[0-9]+">1000</actualValue>
+            </Parameter>
+            <Parameter>
+                <predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">HCM_LHH_TIMEOUT_LOCK_REQUESTS</predefinedPar>
+                <actualValue constraints = "[0-9]+">36</actualValue>
+            </Parameter>
+            <Parameter>
+                <predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">CRC_START_VALUE</predefinedPar>
+                <actualValue constraints = "0?x?[0-9]+">0x00</actualValue>
+            </Parameter>
+            <Parameter>
+            	<predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">Crc8_Wrapper</predefinedPar>
+            	<actualValue constraints = "[^0-9][A-Za-z0-9_]+">DRV_CRC_crc8</actualValue>
+            </Parameter>
+            <Parameter>
+            	<predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">SAE_J1850_CRC8_USED</predefinedPar>
+            	<actualValue constraints = "TRUE|FALSE">FALSE</actualValue>
+            </Parameter>
+            <Parameter>
+            	<predefinedPar constraints = "[^0-9][A-Za-z0-9_]+">CRC_OFFSET</predefinedPar>
+            	<actualValue constraints = "0|7">7</actualValue>
+            </Parameter>
+        </Parameters>
+        <I2CMsg>
+            <predefinedMsg dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">wheelSpeed_1</predefinedMsg>
+            <actualMsg dataType="uint8 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_10</actualMsg>
+            <msgEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</msgEnable>
+            <timeoutMonitor dataType="bool" constraints = "TRUE|FALSE">TRUE</timeoutMonitor>
+            <timeoutValue dataType="uint16" constraints = "0?x?[0-9]+|NULL">300</timeoutValue>
+            <CRCcheck dataType="bool" constraints = "TRUE|FALSE">TRUE</CRCcheck>
+            <crcOffset dataType="uint8" constraints = "0|7|NULL">0</crcOffset>
+            <aliveCntCheck dataType="bool" constraints = "TRUE|FALSE">TRUE</aliveCntCheck>
+            <aliveCntMax dataType="uint8" constraints = "[0-9]+|NULL">16</aliveCntMax>
+            <aliveCntIncMin dataType="uint8" constraints = "[0-9]+|NULL">8</aliveCntIncMin>
+            <aliveCntIncMax dataType="uint8" constraints = "[0-9]+|NULL">12</aliveCntIncMax>
+            <qualCheck dataType="bool" constraints = "TRUE|FALSE">TRUE</qualCheck>
+            <qualTime dataType="uint16" constraints = "0?x?[0-9]+|NULL">820</qualTime>
+            <funcCode dataType="uint8" constraints = "0?x?[0-9A-Fa-f]+|NULL">0x47</funcCode>
+            <msgLength dataType="uint8" constraints = "[1-8]|NULL">8</msgLength>
+            <msgLcdSda dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeed1</msgLcdSda>
+            <msgLcdSdaInv dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeed1_inv</msgLcdSdaInv>
+            <msgLcdSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdWheelSpeed1_ID</msgLcdSdaID>
+            <msgLcdSdaTrue dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdWheelSpeed1_TRUE</msgLcdSdaTrue>
+            <msgLcdSdaFalse dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdWheelSpeed1_FALSE</msgLcdSdaFalse>
+            <msgQualCntSda dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdqualcntwheelspeed1</msgQualCntSda>
+            <msgQualCntSdaInv dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdqualcntwheelspeed1_inv</msgQualCntSdaInv>
+            <msgQualCntSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdQualCntWheelSpeed1_ID</msgQualCntSdaID>
+            <signals>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_1_CRC</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_10_Checksum</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">NULL</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_1_ALIVE</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_10_MsgCounter</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">NULL</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_1_VALIDITY_FR</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">FALSE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">NULL</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedfrvalid</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedfrvalid_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferWheelSpeedFR_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_1_VALIDITY_FL</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">FALSE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">NULL</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedflvalid</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedflvalid_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferWheelSpeedFL_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_1_VALIDITY_RR</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_RRWheelSpdVD</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">0</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedrrvalid</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedrrvalid_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferWheelSpeedRR_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_1_VALIDITY_RL</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_RLWheelSpdVD</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">0</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedrlvalid</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedrlvalid_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferWheelSpeedRL_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_1_FR</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">FALSE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">NULL</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedfr</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedfr_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferWheelSpeedFR_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_1_FL</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">FALSE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">NULL</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedfl</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedfl_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferWheelSpeedFL_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_1_RR</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_RRWheelSpd</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedrr</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedrr_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferWheelSpeedRR_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_1_RL</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_RLWheelSpd</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedrl</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedrl_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferWheelSpeedRL_ID</sigSdaID>
+                </signal>
+            </signals>
+        </I2CMsg>
+        <I2CMsg>
+            <predefinedMsg dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">wheelSpeed_2</predefinedMsg>
+            <actualMsg dataType="uint8 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_9</actualMsg>
+            <msgEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</msgEnable>
+            <timeoutMonitor dataType="bool" constraints = "TRUE|FALSE">TRUE</timeoutMonitor>
+            <timeoutValue dataType="uint16" constraints = "0?x?[0-9]+|NULL">300</timeoutValue>
+            <CRCcheck dataType="bool" constraints = "TRUE|FALSE">TRUE</CRCcheck>
+            <crcOffset dataType="uint8" constraints = "0|7|NULL">0</crcOffset>
+            <aliveCntCheck dataType="bool" constraints = "TRUE|FALSE">TRUE</aliveCntCheck>
+            <aliveCntMax dataType="uint8" constraints = "[0-9]+|NULL">16</aliveCntMax>
+            <aliveCntIncMin dataType="uint8" constraints = "[0-9]+|NULL">8</aliveCntIncMin>
+            <aliveCntIncMax dataType="uint8" constraints = "[0-9]+|NULL">12</aliveCntIncMax>
+            <qualCheck dataType="bool" constraints = "TRUE|FALSE">TRUE</qualCheck>
+            <qualTime dataType="uint16" constraints = "0?x?[0-9]+|NULL">820</qualTime>
+            <funcCode dataType="uint8" constraints = "0?x?[0-9A-Fa-f]+|NULL">0x48</funcCode>
+            <msgLength dataType="uint8" constraints = "[1-8]|NULL">8</msgLength>
+            <msgLcdSda dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeed2</msgLcdSda>
+            <msgLcdSdaInv dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeed2_inv</msgLcdSdaInv>
+            <msgLcdSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdWheelSpeed2_ID</msgLcdSdaID>
+            <msgLcdSdaTrue dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdWheelSpeed2_TRUE</msgLcdSdaTrue>
+            <msgLcdSdaFalse dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdWheelSpeed2_FALSE</msgLcdSdaFalse>
+            <msgQualCntSda dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdqualcntwheelspeed2</msgQualCntSda>
+            <msgQualCntSdaInv dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdqualcntwheelspeed2_inv</msgQualCntSdaInv>
+            <msgQualCntSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdQualCntWheelSpeed2_ID</msgQualCntSdaID>
+            <signals>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_2_CRC</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_9_Checksum</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">NULL</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_2_ALIVE</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_9_MsgCounter</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">NULL</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_2_VALIDITY_FR</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_FRWheelSpdVD</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">0</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedfrvalid</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedfrvalid_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdWheelSpeedFRValid_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_2_VALIDITY_FL</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_FLWheelSpdVD</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">0</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedflvalid</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedflvalid_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdWheelSpeedFLValid_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_2_VALIDITY_RR</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">FALSE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">NULL</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedrrvalid</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedrrvalid_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdWheelSpeedRRValid_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_2_VALIDITY_RL</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">FALSE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">NULL</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedrlvalid</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdwheelspeedrlvalid_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdWheelSpeedRLValid_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_2_FR</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_FRWheelSpd</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedfr</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedfr_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferWheelSpeedFR_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_2_FL</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">BCS_FLWheelSpd</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedfl</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedfl_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferWheelSpeedFL_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_2_RR</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">FALSE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">NULL</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedrr</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedrr_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferWheelSpeedRR_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">WHEEL_SPEED_2_RL</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">FALSE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">NULL</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedrl</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferwheelspeedrl_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferWheelSpeedRL_ID</sigSdaID>
+                </signal>
+            </signals>
+        </I2CMsg>
+        <I2CMsg>
+            <predefinedMsg dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">powerMode</predefinedMsg>
+            <actualMsg dataType="uint8 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">PEPS_2</actualMsg>
+            <msgEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</msgEnable>
+            <timeoutMonitor dataType="bool" constraints = "TRUE|FALSE">TRUE</timeoutMonitor>
+            <timeoutValue dataType="uint16" constraints = "0?x?[0-9]+|NULL">300</timeoutValue>
+            <CRCcheck dataType="bool" constraints = "TRUE|FALSE">TRUE</CRCcheck>
+            <crcOffset dataType="uint8" constraints = "0|7|NULL">0</crcOffset>
+            <aliveCntCheck dataType="bool" constraints = "TRUE|FALSE">TRUE</aliveCntCheck>
+            <aliveCntMax dataType="uint8" constraints = "[0-9]+|NULL">16</aliveCntMax>
+            <aliveCntIncMin dataType="uint8" constraints = "[0-9]+|NULL">8</aliveCntIncMin>
+            <aliveCntIncMax dataType="uint8" constraints = "[0-9]+|NULL">12</aliveCntIncMax>
+            <qualCheck dataType="bool" constraints = "TRUE|FALSE">TRUE</qualCheck>
+            <qualTime dataType="uint16" constraints = "0?x?[0-9]+|NULL">820</qualTime>
+            <funcCode dataType="uint8" constraints = "0?x?[0-9A-Fa-f]+|NULL">0x49</funcCode>
+            <msgLength dataType="uint8" constraints = "[1-8]|NULL">8</msgLength>
+            <msgLcdSda dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdpowermode</msgLcdSda>
+            <msgLcdSdaInv dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdpowermode_inv</msgLcdSdaInv>
+            <msgLcdSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdPowerMode_ID</msgLcdSdaID>
+            <msgLcdSdaTrue dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdPowerMode_TRUE</msgLcdSdaTrue>
+            <msgLcdSdaFalse dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdPowerMode_FALSE</msgLcdSdaFalse>
+            <msgQualCntSda dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdqualcntpowermode</msgQualCntSda>
+            <msgQualCntSdaInv dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdqualcntpowermode_inv</msgQualCntSdaInv>
+            <msgQualCntSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdQualCntPowerMode_ID</msgQualCntSdaID>
+            <signals>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">POWER_MODE_CRC</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">PEPS_2_Checksum</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">NULL</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">POWER_MODE_ALIVE</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">PEPS_2_MsgCounter</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">NULL</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">POWER_MODE_VALIDITY</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">PEPS_SysPowMode_RddyVD</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">0</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdpowermodevalid</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdpowermodevalid_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdPowerModeValid_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">POWER_MODE</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">PEPS_SysPowMode_Rddy</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferpowermode</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdpowermodevalid_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferPowerMode_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">IGNITION_STATE</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">PEPS_IG1RelaySt</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferignitionstate</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferignitionstate_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferIgnitionState_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">IGNITION_STATE_VALIDITY</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">PEPS_IG1RelayStVD</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">0</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdvehiclespeedvalid</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdignitionstatevalid_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdIgnitionStateValid_ID</sigSdaID>
+                </signal>
+            </signals>
+        </I2CMsg>
+        <I2CMsg>
+            <predefinedMsg dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">vehicleSpeed</predefinedMsg>
+            <actualMsg dataType="uint8 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">EMS_2</actualMsg>
+            <msgEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</msgEnable>
+            <timeoutMonitor dataType="bool" constraints = "TRUE|FALSE">TRUE</timeoutMonitor>
+            <timeoutValue dataType="uint16" constraints = "0?x?[0-9]+|NULL">300</timeoutValue>
+            <CRCcheck dataType="bool" constraints = "TRUE|FALSE">TRUE</CRCcheck>
+            <crcOffset dataType="uint8" constraints = "0|7|NULL">0</crcOffset>
+            <aliveCntCheck dataType="bool" constraints = "TRUE|FALSE">TRUE</aliveCntCheck>
+            <aliveCntMax dataType="uint8" constraints = "[0-9]+|NULL">16</aliveCntMax>
+            <aliveCntIncMin dataType="uint8" constraints = "[0-9]+|NULL">8</aliveCntIncMin>
+            <aliveCntIncMax dataType="uint8" constraints = "[0-9]+|NULL">12</aliveCntIncMax>
+            <qualCheck dataType="bool" constraints = "TRUE|FALSE">TRUE</qualCheck>
+            <qualTime dataType="uint16" constraints = "0?x?[0-9]+|NULL">820</qualTime>
+            <funcCode dataType="uint8" constraints = "0?x?[0-9A-Fa-f]+|NULL">0x4A</funcCode>
+            <msgLength dataType="uint8" constraints = "[1-8]|NULL">8</msgLength>
+            <msgLcdSda dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdvehiclespeed</msgLcdSda>
+            <msgLcdSdaInv dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdvehiclespeed_inv</msgLcdSdaInv>
+            <msgLcdSdaID dataType="uint16 " constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdVehicleSpeed_ID</msgLcdSdaID>
+            <msgLcdSdaTrue dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdVehicleSpeed_TRUE</msgLcdSdaTrue>
+            <msgLcdSdaFalse dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdVehicleSpeed_FALSE</msgLcdSdaFalse>
+            <msgQualCntSda dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdqualcntvehiclespeed</msgQualCntSda>
+            <msgQualCntSdaInv dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdqualcntvehiclespeed_inv</msgQualCntSdaInv>
+            <msgQualCntSdaID dataType="uint16 " constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdQualCntVehicleSpeed_ID</msgQualCntSdaID>
+            <signals>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">VEHICLE_SPEED_CRC</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">FALSE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">NULL</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">NULL</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">VEHICLE_SPEED_ALIVE</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">FALSE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">NULL</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">NUL</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">NULL</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">VEHICLE_SPEED_VALIDITY</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">EMS_EngSpdVD</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">0</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdvehiclespeedvalid</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_lcdvehiclespeedvalid_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_LcdVehicleSpeedValid_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">VEHICLE_SPEED</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">EMS_EngSpd</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_buffervehiclespeed</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_buffervehiclespeed_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferVehicleSpeed_ID</sigSdaID>
+                </signal>
+                <signal>
+                    <predefinedSig dataType="unsigned char *" constraints = "[^0-9][A-Za-z0-9_]+">ENGINE_SPEED</predefinedSig>
+                    <actualSig dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">EMS_EngSpd</actualSig>
+                    <sigEnable dataType="bool" constraints = "TRUE|FALSE">TRUE</sigEnable>
+                    <initValue dataType="uint16" constraints = "[0-9]+|NULL">65535</initValue>
+                    <sigSdaStorage dataType="uint16 *" constraints = "[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferenginespeed</sigSdaStorage>
+                    <sigSdaStorageInv dataType="uint16 *" constraints="[^0-9][A-Za-z0-9_]+|NUL">SWSW_coco_sda_bufferenginespeed_inv</sigSdaStorageInv>
+                    <sigSdaID dataType="uint16" constraints = "[^0-9][A-Za-z0-9_]+|NULL">APP_SDA_BufferEngineSpeed_ID</sigSdaID>
+                </signal>            </signals>
+        </I2CMsg>
+    </LCD>
+</project>
