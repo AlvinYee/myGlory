@@ -53,7 +53,10 @@ class SignalBitFieldGenerator:
         return self._signal_groups_by_byte
 
     def bit_field_generator(self, file):
+        BITFIELD_STORAGE_ORDER = 'LOW_TO_HIGH'
         for signal_group in self._signal_groups_by_byte:
+            if BITFIELD_STORAGE_ORDER == 'LOW_TO_HIGH':
+                signal_group.reverse()
             for signal in signal_group:
                 file.write(self.bit_field_syntax(signal.signal_name, signal.signal_len))
 
