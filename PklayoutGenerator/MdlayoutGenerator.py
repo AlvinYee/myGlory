@@ -14,71 +14,86 @@ from PkdbcIterator.MddbcParser import DbcParser
 from PkCanMsgLayoutComposer.MdCanMsgLayoutComposer import CanMsgLayoutComposer
 from PklayoutGenerator.MdlayoutAnalyzer import SignalBitFieldGenerator
 
-if __name__ == '__main__':
-    s = ''
-    # create a instance of DbcParser
-    myParser = DbcParser()
+
+def main():
+    syntax = ''
+    # specify sys argv positions
+    arg_dbc = 1
+    arg_hfile = 2
+    arg_cfile = 3
+    arg_escl_name = 4
+    arg_rx_msg_list = 5
     try:
-        # sys.argv[1],[2],[3] are paths for dbc, input file, output file in order
-        # will below, all dbc info is captured in attributes of myParser
-        myParser.parser_dbc(sys.argv[1])
-        print('[INFO]: dbc parsing succeed')
-        with open(sys.argv[2], 'w') as hFile:
-            hFile.write('#include "mq_type.h"\n')
-            with open(sys.argv[3], 'w') as cFile:
-                cFile.write('#include "I2CCAN_Par.h"\n')
-                # iterate all msgs stored in node.node_tx_msgs and node.node_rx_msgs
-                # for msg in list(myParser.can_network.nodes['ESCL'].node_tx_msgs.values()) + list(
-                #         myParser.can_network.nodes['ESCL'].node_rx_msgs.values()):
-                for msg in list(myParser.can_network.nodes[sys.argv[4]].node_rx_msgs.values()):
-                    try:
-                        # by default, it is treated as msg with multiplexer
-                        # otherwise, an exception will be captured and code falls into the exception handler
-                        # vritual_msg is different image of original msg by multiplexer_id
-                        for virtual_msg in CanMsgLayoutComposer(
-                                msg).compose_msg_with_multiplexer().node_tx_msgs.values():
-                            hFile.write('\ntypedef struct _c_{0}_msg_typeTag\n'.format(virtual_msg.msg_name))
-                            hFile.write('{\n')
-                            composed_msg, sub_signals_group = CanMsgLayoutComposer(
-                                virtual_msg).compose_msg_without_multiplexer()
-                            # with returned composed msg for bif field analysis
-                            generator = SignalBitFieldGenerator(composed_msg)
-                            generator.bit_field_generator(hFile)
-                            hFile.write('}')
-                            s += '\t_c_{0}_msg_type {1};\n'.format(virtual_msg.msg_name, virtual_msg.msg_name)
-                            hFile.write('_c_{0}_msg_type;\n'.format(virtual_msg.msg_name))
-                            # for a msg with multiplexer, a union instead of structure will be created
-                            generator.signal_union_generator(msg, hFile)
-                            # with returned sub_signals_group for signal access macro generation
-                            generator.signal_access_macro_syntax(sub_signals_group, hFile)
-                        hFile.write('\ntypedef union _u_{0}_msg_typeTag\n'.format(msg.msg_name))
-                        hFile.write('{\n')
-                        hFile.write(s)
-                        hFile.write('}')
-                        hFile.write('_u_{0}_msg_type;\n'.format(msg.msg_name))
-                        cFile.write('_u_{0}_msg_type\t\t{1};\n'.format(msg.msg_name, msg.msg_name))
-                        hFile.write('extern _u_{0}_msg_type\t\t{1};\n'.format(msg.msg_name, msg.msg_name))
-                    except TypeError or AttributeError:
-                        hFile.write('\ntypedef struct _c_{0}_msg_typeTag\n'.format(msg.msg_name))
-                        hFile.write('{\n')
+        rx_msg_list = sys.argv[arg_rx_msg_list].split(",")
+    except IndexError:
+        rx_msg_list = None
+
+    # create a instance of DbcParser
+    my_parser = DbcParser()
+    # parse dbc file and create node,msg,signal objects
+    my_parser.parser_dbc(sys.argv[arg_dbc])
+
+    with open(sys.argv[arg_hfile], 'w') as h_file:
+        h_file.write('#include "mq_type.h"\n')
+        with open(sys.argv[arg_cfile], 'w') as c_file:
+            c_file.write('#include "I2CCAN_Par.h"\n')
+            # get all ESCL Rx msgs
+            try:
+                all_rx_msgs = list(my_parser.can_network.nodes[sys.argv[arg_escl_name]].node_rx_msgs.values())
+            except KeyError:
+                print('[ERROR] please set the actual name of ESCL from dbc in .bat file')
+
+            for msg in all_rx_msgs:
+                # if Rx msg in the to-be-generated list or not specified
+                if rx_msg_list is None or msg.msg_name in rx_msg_list:
+                    for signal in msg.msg_signals.values():
+                        # if any one signal has multiplexer, go to handle msg with multiplexer
+                        if signal.signal_multiplexer is not None:
+                            # msg with multiplexer will be handled as virtual_node that has several virtual msg
+                            # these msg share same memory with different layout, created as union in C language
+                            # in the end, each virtual msg has no multiplexer and handled as others
+                            virtual_node = CanMsgLayoutComposer(msg).compose_msg_with_multiplexer()
+                            for virtual_msg in virtual_node.node_tx_msgs.values():
+                                h_file.write('\ntypedef struct _c_{0}_msg_typeTag\n'.format(virtual_msg.msg_name))
+                                h_file.write('{\n')
+                                composed_msg, sub_signals_group = CanMsgLayoutComposer(
+                                    virtual_msg).compose_msg_without_multiplexer()
+                                # with returned composed msg for bif field analysis
+                                generator = SignalBitFieldGenerator(composed_msg)
+                                generator.bit_field_generator(h_file)
+                                h_file.write('}')
+                                syntax += '\t_c_{0}_msg_type {1};\n'.format(virtual_msg.msg_name, virtual_msg.msg_name)
+                                h_file.write('_c_{0}_msg_type;\n'.format(virtual_msg.msg_name))
+                                # for a msg with multiplexer, a union instead of structure will be created
+                                generator.signal_union_generator(msg, h_file)
+                                # with returned sub_signals_group for signal access macro generation
+                                generator.signal_access_macro_syntax(sub_signals_group, h_file)
+                            h_file.write('\ntypedef union _u_{0}_msg_typeTag\n'.format(msg.msg_name))
+                            h_file.write('{\n')
+                            h_file.write(syntax)
+                            h_file.write('}')
+                            h_file.write('_u_{0}_msg_type;\n'.format(msg.msg_name))
+                            c_file.write('_u_{0}_msg_type\t\t{1};\n'.format(msg.msg_name, msg.msg_name))
+                            h_file.write('extern _u_{0}_msg_type\t\t{1};\n'.format(msg.msg_name, msg.msg_name))
+                            break
+                    # else  no signal has multiplexer
+                    else:
+                        h_file.write('\ntypedef struct _c_{0}_msg_typeTag\n'.format(msg.msg_name))
+                        h_file.write('{\n')
                         composed_msg, sub_signals_group = CanMsgLayoutComposer(
                             msg).compose_msg_without_multiplexer()
                         # with returned composed msg for bif field analysis
                         generator = SignalBitFieldGenerator(composed_msg)
-                        generator.bit_field_generator(hFile)
-                        hFile.write('}')
-                        hFile.write('_c_{0}_msg_type;\n'.format(msg.msg_name))
-                        cFile.write('_c_{0}_msg_type\t\t{1};\n'.format(msg.msg_name, msg.msg_name))
-                        hFile.write('extern _c_{0}_msg_type\t\t{1};\n'.format(msg.msg_name, msg.msg_name))
-                        generator.signal_struct_generator(hFile)
+                        generator.bit_field_generator(h_file)
+                        h_file.write('}')
+                        h_file.write('_c_{0}_msg_type;\n'.format(msg.msg_name))
+                        c_file.write('_c_{0}_msg_type\t\t{1};\n'.format(msg.msg_name, msg.msg_name))
+                        h_file.write('extern _c_{0}_msg_type\t\t{1};\n'.format(msg.msg_name, msg.msg_name))
+                        generator.signal_struct_generator(h_file)
                         # with returned sub_signals_group for signal access macro generation
-                        generator.signal_access_macro_syntax(sub_signals_group, hFile)
-        print('[INFO]: file generation succeed')
-    except UnicodeDecodeError:
-        print('[ERROR] dbc decoding error, please convert dbc to utf-8 first')
-    except KeyError:
-        print('[ERROR] please set the actual name of ESCL from dbc in .bat file')
-    except FileNotFoundError:
-        print('[ERROR]: no dbc file designated')
-    except IndexError:
-        print('[ERROR]: input or output directory is not properly given')
+                        generator.signal_access_macro_syntax(sub_signals_group, h_file)
+    print('[INFO]: file generation succeed')
+
+
+if __name__ == '__main__':
+    main()
